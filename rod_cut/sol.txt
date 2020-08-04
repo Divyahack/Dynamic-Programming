@@ -1,0 +1,17 @@
+
+int cutRod(int price[], int n) 
+{ 
+   int dp[n+1]; 
+   dp[0] = 0;   // rod of size 0 has value 0 
+   int i, j; 
+   for (i = 1; i<=n; i++) // find for all sizess of rod 
+   { 
+       int max_val = INT_MIN; 
+       for (j = 0; j < i; j++) 
+         max_val = max(max_val, price[j] + dp[i-j-1]); 
+       dp[i] = max_val; 
+   } 
+  
+   return dp[n]; 
+} 
+ 
